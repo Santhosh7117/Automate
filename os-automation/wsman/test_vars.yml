@@ -1,0 +1,75 @@
+
+TEST_VARS:
+  R630-FPM1CD2:
+    ISCSI_DHCP:
+      NIC: "NIC.Integrated.1-2-1"
+      INIT: "iqn.2005-03.com.RedHat:r630-fpm1cd2"
+      IQN: "iqn.2001-05.com.equallogic:0-1cb196-e0a8d4a2d-a5a0000005d5a30e-r630-fpm1cd2"
+      TGT_IP: "100.98.4.16"
+      PROTO: "IPv4"
+
+  T630-G2SYBD2:
+    ISCSI_DHCP:
+      NIC: "NIC.Integrated.1-2-1"
+      INIT: "iqn.2005-03.com.RedHat:t630-g2sybd2"
+      IQN: "iqn.2001-05.com.equallogic:0-1cb196-7848d4a2d-2b5000000605a459-t630-g2sybd2"
+      TGT_IP: "100.98.4.16"
+      PROTO: "IPv4"
+  R730-G471CD2:
+    ISCSI_DHCP:
+      NIC: "NIC.Integrated.1-2-1"
+      INIT: "iqn.2005-03.com.RedHat:r730-g471cd2"
+      IQN: "iqn.2001-05.com.equallogic:0-1cb196-7f28d4a2d-5b2000000655a459-r730-g471cd2"
+      TGT_IP: "100.98.4.16"
+      PROTO: "IPv4"
+
+  R830-7PG1TF2:
+    ISCSI_DHCP:
+      NIC: "NIC.Integrated.1-2-1"
+      INIT: "iqn.2005-03.com.RedHat:r830-7pg1tf2"
+      IQN: "iqn.2001-05.com.equallogic:0-1cb196-8458d4a2d-afc000000685a459-r830-7pg1tf2"
+      TGT_IP: "100.98.4.16"
+      PROTO: "IPv4"
+
+  R330-BXWX992:
+    ISCSI_DHCP:
+      NIC: "NIC.Integrated.1-2-1"
+      INIT: "iqn.2005-03.com.RedHat:r330-bxwx992"
+      IQN: "iqn.2001-05.com.equallogic:0-1cb196-87d8d4a2d-ce50000006b5a459-r330-bxwx992"
+      TGT_IP: "100.98.4.16"
+      PROTO: "IPv4"
+
+  R520-CGF2G2S:
+    ISCSI_DHCP:
+      NIC: "NIC.Integrated.1-2-1"
+      INIT: "iqn.2005-03.com.RedHat:r520-cgf2g2s"
+      IQN: "iqn.2001-05.com.equallogic:0-1cb196-8a78d4a2d-8fe0000006e5a459-r520-cgf2g2s"
+      TGT_IP: "100.98.4.16"
+      PROTO: "IPv4"
+
+  R720-13K46Z1:
+    ISCSI_DHCP:
+      NIC: "NIC.Integrated.1-2-1"
+      INIT: "iqn.2005-03.com.RedHat:r720-13k46z1"
+      IQN: "iqn.2001-05.com.equallogic:0-1cb196-8cf8d4a2d-148000000715a459-r720-13k46z1"
+      TGT_IP: "100.98.4.16"
+      PROTO: "IPv4"
+
+  R530-1RCYY42:
+    ISCSI_DHCP:
+      NIC: "NIC.Integrated.1-2-1"
+      INIT: "iqn.2005-03.com.RedHat:r530-1rcyy42"
+      IQN: "iqn.2001-05.com.equallogic:0-1cb196-8ee8d4a2d-805000000745a459-r530-1rcyy42"
+      TGT_IP: "100.98.4.16"
+      PROTO: "IPv4"
+
+  T430-9GNVY42:
+    ISCSI_DHCP:
+      NIC: "NIC.Integrated.1-2-1"
+      INIT: "iqn.2005-03.com.RedHat:t430-9gnvy42"
+      IQN: "iqn.2001-05.com.equallogic:0-1cb196-4e18d4a2d-f77000000775a46a-t430-9gnvy42"
+      TGT_IP: "100.98.4.16"
+      PROTO: "IPv4"
+
+
+

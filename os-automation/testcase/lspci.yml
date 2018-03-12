@@ -1,0 +1,11 @@
+- hosts: test 
+  name: lspci test
+  tasks:
+    - name: copy script 
+      copy:
+        src: /root/Automation/os-testing/testcase/lspci.sh 
+        dest: /root/lspci.sh
+	mode: 0777
+
+    - name: list files
+      shell: "chmod +x /root/lspci.sh ; /root/lspci.sh"

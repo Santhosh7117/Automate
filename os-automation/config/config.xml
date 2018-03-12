@@ -1,0 +1,47 @@
+<systems>
+<system name="R930-CG8CH62">
+<tests>
+ <test name="general">
+<parameters>
+<family>RedHatEnterpriseLinux7</family>
+<distro>Red Hat Enterprise Linux 7.1</distro>
+<kopt>ignore_loglevel</kopt>
+<system>R930-CG8CH62</system>
+<idrac>172.16.67.24</idrac>
+<server>172.16.64.1</server>
+<user>automation</user>
+<password>automation</password>
+<isoname>RHEL-7.0 Server.x86_64</isoname>
+<isodst>/var/ftp/pub/automation/install/rhel71_automation.iso</isodst>
+                                 <isosrc>/var/ftp/pub/redhat/RHEL7/7.1/Server/x86_64/iso/RHEL-7.1-20150219.1-Server-x86_64-dvd1.iso  </isosrc> 
+                                 <kspath>/var/ftp/pub/automation/install/RHEL7.1_cfg/ksCdromRh.cfg</kspath> 
+                                 <isolinuxpath>/var/ftp/pub/automation/install/RHEL7.1_cfg/isolinux.cfg</isolinuxpath> 
+ </parameters>
+ </test>
+<test name = "install_RAID0_Uefi_PXE">
+<parameters>
+<level>2</level>
+<spandepth>1</spandepth>
+<spanlength>6</spanlength>
+<disk>Disk.Bay.2:Enclosure.Internal.0-3:RAID.Integrated.1-1</disk>
+<disk>Disk.Bay.3:Enclosure.Internal.0-3:RAID.Integrated.1-1</disk>
+<disk>Disk.Bay.4:Enclosure.Internal.0-3:RAID.Integrated.1-1</disk>
+<disk>Disk.Bay.5:Enclosure.Internal.0-3:RAID.Integrated.1-1</disk>
+<disk>Disk.Bay.0:Enclosure.Internal.0-3:RAID.Integrated.1-1</disk>
+<disk>Disk.Bay.1:Enclosure.Internal.0-3:RAID.Integrated.1-1</disk>
+<PXE>NIC.Integrated.1-4-1</PXE>
+<NICS>NIC.Integrated.1-2-1,NIC.Integrated.1-3-1,NIC.Integrated.1-1-1</NICS>
+<PERC>RAID.Integrated.1-1</PERC>
+<ISCSI>None</ISCSI>
+</parameters>
+<testcase name="/CoreOS/beaker/Sanity/var-log-analysis">
+	<LOG_FILE>/var/log/messages</LOG_FILE>
+</testcase>
+<testcase name="/installation/beaker/Install/check-installation">
+	<RAID>RAID0</RAID>
+</testcase>	
+
+</test>
+</tests>
+</system>
+</systems>

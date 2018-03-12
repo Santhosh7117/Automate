@@ -1,0 +1,25 @@
+---
+- hosts: golden_config
+  name: setup ISCSI NIC
+  gather_facts: no
+  
+
+
+  tasks:
+    - name: include vars
+      include_vars:
+        file: test_vars.yml
+
+    - name: set ISCSI configuration
+      shell: python uefi_iscsi.py {{idracip}} {{item.ISCSI_DHCP.NIC}} {{item.ISCSI_DHCP.INIT}} {{item.ISCSI_DHCP.IQN}} {{item.ISCSI_DHCP.TGT_IP}} {{item.ISCSI_DHCP.PROTO}}
+      delegate_to: 127.0.0.1
+
+      with_items:
+        - "{{TEST_VARS[host]}}"
+
+        #    - name: set ISCSI configuration
+        #shell: python uefi_iscsi.py {{idracip}} {{item.ISCSI_NIC}} {{item.ISCSI_INIT}} {{item.iqn}} {{item.tgt_ip}} {{item.proto}}
+        #with_items:
+
+
+

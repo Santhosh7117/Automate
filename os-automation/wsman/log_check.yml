@@ -1,0 +1,19 @@
+---
+- hosts: golden_config
+  name: check sys log
+
+  tasks:
+    - name: check errors 
+      shell: cat /var/log/messages| grep -i error| grep -i kernel | grep -v  ansible-command
+
+    - name: check warr
+      shell: cat /var/log/messages | grep -i warn | grep -v  ansible-command
+      
+    - name: check bug
+      shell: cat /var/log/messages | grep -i 'Firmware Bug' | grep -v  ansible-command
+      
+    - name: check ignore
+      shell: cat /var/log/messages | grep -i 'ignore' | grep -v  ansible-command
+      
+    - name: check fail
+      shell: cat /var/log/messages | grep -i 'fail' | grep -v  ansible-command

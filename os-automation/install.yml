@@ -1,0 +1,53 @@
+---
+- hosts: golden_config
+  name: schedule bkr job
+  gather_facts: no
+  vars:
+    RHEL75_distro: "\"Red Hat Enterprise Linux 7.5\""
+    RHEL74_distro: "\"Red Hat Enterprise Linux 7.4\""
+    RHEL69_distro: "\"Red Hat Enterprise Linux 6.9\""
+    RHEL7_family: "RedHatEnterpriseLinux7"
+    RHEL6_family: "RedHatEnterpriseLinux7"
+  tasks:
+    - name: set to pxe boot
+      shell: python set_pxe_boot.py {{idracip}}
+      delegate_to: 127.0.0.1
+
+    - name: schedule bkr job
+      shell: "bkr workflow-simple  --kernel-options='ignore_loglevel' --machine={{host}} --family={{RHEL7_family}} --distro={{RHEL75_distro}} --arch=x86_64 --variant=Server --method=http --job-group=golden_config_users --whiteboard={{testcase}}-{{host}} --task /distribution/install  --task /CoreOS/beaker/Sanity/check-logs"
+      register: job_id
+      delegate_to: 127.0.0.1
+      tags:
+        - RHEL7.5
+
+    - name: schedule bkr job
+      shell: "bkr workflow-simple  --kernel-options='ignore_loglevel' --machine={{host}} --family={{RHEL7_family}} --distro={{RHEL74_distro}} --arch=x86_64 --variant=Server --method=http --job-group=golden_config_users --whiteboard={{testcase}}-{{host}} --task /distribution/install  --task /CoreOS/beaker/Sanity/check-logs"
+      register: job_id
+      delegate_to: 127.0.0.1
+      tags:
+        - RHEL7.4
+    - name: schedule bkr job
+      shell: "bkr workflow-simple  --kernel-options='ignore_loglevel' --machine={{host}} --family={{RHEL6_family}} --distro={{RHEL69_distro}} --arch=x86_64 --variant=Server --method=http --job-group=golden_config_users --whiteboard={{testcase}}-{{host}} --task /distribution/install  --task /CoreOS/beaker/Sanity/check-logs"
+      register: job_id
+      delegate_to: 127.0.0.1
+      tags:
+        - RHEL6.9
+
+
+
+
+
+    - name: Wait 600 seconds for target connection to become reachable/usable
+      shell: "bkr job-watch ${{item.stdout.replace('Submitted: [','').replace(']','')}}"
+      retries: 5
+      delay: 300
+      delegate_to: 127.0.0.1
+      with_items:
+        - "{{job_id}}"
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+---
+- hosts: golden_config
+  name: Change bootMode
+  gather_facts: no
+  tasks:
+    - name: set to pxe boot
+      shell: python set_pxe_boot.py {{idracip}}
+      register: result
+      until: result.rc == 0
+      igonre_errors: True
+      retries: 2
+      delay: 3
+      delegate_to: 127.0.0.1
+
+    - name: schedule bkr job
+      shell: "bkr workflow-simple  --kernel-options='ignore_loglevel' --machine={{host}} --family={{family}} --distro='{{distro}}' --arch=x86_64 --variant=Server --method=http --job-group=golden_config_users --whiteboard={{host}} --task /distribution/install  --task /CoreOS/beaker/Sanity/check-logs"
+      register: job_id
+      delegate_to: 127.0.0.1
+
+    - name: wait for installation to complete 
+      shell: bkr job-watch J:{{job_id.stdout.split(':')[2].replace("']","")}}
+      delegate_to: 127.0.0.1
+      
+
+

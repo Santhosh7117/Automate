@@ -1,0 +1,39 @@
+- hosts: Golden_config
+  name: power tool
+  gather_facts: no
+
+  tasks:
+    - name: power on
+      ipmi_power: 
+        name: "{{idracip}}"
+        user: root
+        password: calvin
+        state: on
+      delegate_to: 127.0.0.1
+      tags:
+        - power_on
+
+    - name: power off
+      ipmi_power: 
+        name: "{{idracip}}"
+        user: root
+        password: calvin
+        state: off
+      delegate_to: 127.0.0.1
+      tags:
+        - power_off
+
+
+    - name: power restart
+      ipmi_power: 
+        name: "{{idracip}}"
+        user: root
+        password: calvin
+        state: reset 
+      delegate_to: 127.0.0.1
+      tags:
+        - reset 
+
+
+
+

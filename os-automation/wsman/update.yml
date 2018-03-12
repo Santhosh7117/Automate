@@ -1,0 +1,7 @@
+- hosts: Golden_config
+  name: update OS to latest
+  tasks:
+    - name: update to latest
+      dnf:
+        name: "*"
+        state: latest

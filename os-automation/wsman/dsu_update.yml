@@ -1,0 +1,32 @@
+---
+- hosts: opa
+  name: firmware update
+
+  tasks:
+    - name: add os repo
+      yum_repository:
+        name: os
+        description: EPEL YUM repo
+        baseurl: http://100.98.4.4/redhat/RHEL-7.5/Alpha/os/ 
+        gpgcheck: no
+
+    - name: install wget
+      yum:
+        name: "{{item}}"
+        state: latest
+      with_items:
+        - wget
+        - perl
+        - net-tools
+    - name: execute repo script 
+      shell:  wget -q -O - http://linux.dell.com/repo/hardware/dsu/bootstrap.cgi | bash
+
+    - name: install dsu
+      yum:
+        name: dell-system-update
+        state: latest
+
+      #- name: update all non-interactive
+      #shell: dsu -u -n
+
+

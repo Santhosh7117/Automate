@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wsman invoke -a "BootToNetworkISO"  http://schemas.dell.com/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_OSDeploymentService?SystemCreationClassName="DCIM_ComputerSystem",CreationClassName="DCIM_OSDeploymentService",SystemName="DCIM:ComputerSystem",Name="DCIM:OSDeploymentService" -h $1 -P 443 -u root -p calvin -c Dummy -y basic -V -v  -k "IPAddress=100.98.4.4" -k "ShareName=/public/test/automation" -k "ImageName=$2" -k "ShareType=2" -k "Workgroup=''" -k "Password=''" -k "Username=''"  -R 
+
+#wsman invoke -a "ConfigurableBootToNetworkISO"  http://schemas.dell.com/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_OSDeploymentService?SystemCreationClassName="DCIM_ComputerSystem",CreationClassName="DCIM_OSDeploymentService",SystemName="DCIM:ComputerSystem",Name="DCIM:OSDeploymentService" -h $1 -P 443 -u root -p calvin -c Dummy -y basic -V -v  -k "IPAddress=100.98.4.4" -k "ShareName=/public/test/automation" -k "ImageName=f27.iso" -k "ShareType=2" -k "Workgroup=" -k "Password=" -k "Username="  -k "ResetType=1" -R

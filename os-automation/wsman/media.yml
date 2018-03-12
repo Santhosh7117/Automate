@@ -1,0 +1,28 @@
+- hosts: golden_config
+  name: gold
+  gather_facts: no
+  vars:
+    OS_IMAGE: f27.iso
+    #OS_IMAGE: rhel75.iso
+  tasks:
+    - name: install OS
+      shell: "./attach.sh {{idracip}} {{OS_IMAGE}}"
+      delegate_to: 127.0.0.1
+      tags:
+        - install
+    - name: disconnectiso
+      shell: "python media.py {{idracip}} disconnectiso"
+      delegate_to: 127.0.0.1
+      tags:
+        - disconnectiso
+
+
+    - name: idracreset
+      shell: "python media.py {{idracip}} idracreset"
+      delegate_to: 127.0.0.1
+      tags:
+        - idracreset
+    - name: ssh
+      shell: cat /tmp/anaconda.log
+      tags:
+        - ssh

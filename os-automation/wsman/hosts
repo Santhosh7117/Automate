@@ -1,0 +1,13 @@
+[golden_config]
+#R330-BXWX992  host=R330-BXWX992 idracip=100.98.6.8 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#R630-FPM1CD2  host=R630-FPM1CD2 idracip=100.98.6.20 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#R530-1RCYY42  host=R530-1RCYY42 idracip=100.98.6.11 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#R520-CGF2G2S  host=R520-CGF2G2S idracip=100.98.5.166 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#R720-13K46Z1  host=R720-13K46Z1 idracip=100.98.4.69 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#R730-G471CD2  host=R730-G471CD2 idracip=100.98.4.77 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#R830-7PG1TF2  host=R830-7PG1TF2 idracip=100.98.4.128 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#R820-17H9F2S  host=R820-17H9F2S idracip=100.98.5.164 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#T420-8NS9F2S host=T420-8NS9F2S idracip=100.98.6.68 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#T630-G2SYBD2  host=T630-G2SYBD2 idracip=100.98.6.24 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+#T430-9GNVY42  host=T430-9GNVY42 idracip=100.98.6.27 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=Dell@123gold
+R930-CG8CH62  host=R930-CG8CH62 idracip=100.98.5.170 idracuser=root  idracpswd=calvin ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=dell01

@@ -1,0 +1,11 @@
+- hosts: test
+  name: network
+  gather_facts: no
+  vars:
+    idracip: 100.98.6.20
+
+  tasks:
+    - name: get all nics
+      shell: python w_nic_mgmt.py {{idracip}}
+      delegate_to: 127.0.0.1
+

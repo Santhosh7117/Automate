@@ -1,0 +1,15 @@
+---
+- hosts: Golden_config
+  name: config profile
+  gather_facts: False
+  vars:
+    install_test:
+      - Bios_onboardSATA_PXEv4
+      - Uefi_onboardSATA_PXEv4
+
+  tasks:
+    - name: export profiles
+      shell: python /root/profile/wsman/profile_export.py {{idracip}} {{item}}
+      delegate_to: 127.0.0.1
+      with_items:
+        - "{{install_test}}"

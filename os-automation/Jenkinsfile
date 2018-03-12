@@ -1,0 +1,61 @@
+#!groovy
+
+testcases=['RAID0-Bios-PXEv4','RAID0-Uefi-PXEv4']
+OSs=['RHEL7.5','RHEL7.4']
+
+node('R720-FMSCHZ1') {
+    checkout scm
+}
+
+testing(testcases)
+
+def testing(testcases) {
+    
+    for (item in testcases) {
+        for (os in OSs) {
+            stage('Config Server') {
+                ConfigServer(item) 
+            }
+            stage('Install OS') {
+                InstallOS(item,os) 
+            }
+            
+            
+        }
+    }
+     post { 
+        always { 
+            cleanWs()
+        }
+    }
+}
+
+
+def ConfigServer(testcase) {
+
+    node('R720-FMSCHZ1') {
+
+    
+        boot_mode=testcase.split('-')[1]
+        bootMedia=testcase.split('-')[0]
+        installMedia=testcase.split('-')[1]
+        
+        echo "set boot mode as:${boot_mode}"
+        ansiblePlaybook(
+            playbook: "wsman/job.yml",
+            inventory: "wsman/hosts", 
+            extras: "-e bootMode=${boot_mode}"
+        )
+    }
+}
+def InstallOS(testcase,os) {
+    node('R720-FMSCHZ1') {
+        
+        ansiblePlaybook(
+            playbook: "wsman/install.yml",
+            inventory: "wsman/hosts", 
+            extras: "-e testcase=${testcase}"
+            tags: "${os}"
+        )
+    }
+}

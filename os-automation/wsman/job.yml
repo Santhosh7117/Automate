@@ -1,0 +1,31 @@
+---
+- hosts: golden_config
+  name: Change bootMode
+  gather_facts: no
+  tasks:
+    - name: change boot mode
+      shell: python  bootmode.py {{idracip}} {{bootMode}}
+      register: job_id
+      until: job_id.rc == 0
+      ignore_errors: True
+      retries: 2
+      delay: 3
+      delegate_to: 127.0.0.1
+
+
+    - name: moinitor job
+      shell: python job.py {{idracip}} {{job_id.stdout}}
+      register: result
+      delegate_to: 127.0.0.1
+      until: "'completed' in result.stdout"
+      retries: 10
+      delay: 60
+      when: 
+        - job_id.stdout != "True"        
+        - job_id.stdout != "False"
+      ignore_errors: True
+
+
+      
+
+
